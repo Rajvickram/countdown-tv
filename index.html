@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Election Countdown</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+}
+
+.container {
+    border: 2px solid white;
+    margin: 20px auto;
+    width: 95%;
+    padding: 20px 0;
+}
+
+h1 {
+    color: red;
+    font-size: 3vw;
+}
+
+.timer {
+    font-size: 10vw;
+    font-weight: bold;
+    color: red;
+    letter-spacing: 1vw;
+}
+
+.labels {
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
+    font-size: 2vw;
+    color: red;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+    <img src="https://via.placeholder.com/1200x400">
+</div>
+
+<div class="container">
+    <h1>2026 ELECTION</h1>
+
+    <div class="timer">
+        <span id="days">00</span> :
+        <span id="hours">00</span> :
+        <span id="minutes">00</span> :
+        <span id="seconds">00</span>
+    </div>
+
+    <div class="labels">
+        <div>DAYS</div>
+        <div>HOURS</div>
+        <div>MINUTES</div>
+        <div>SECONDS</div>
+    </div>
+</div>
+
+<script>
+
+// TARGET DATE
+const targetDate = new Date("May 1, 2026 00:00:00").getTime();
+
+// COUNTDOWN
+setInterval(() => {
+    const now = new Date().getTime();
+    const gap = targetDate - now;
+
+    let d = Math.floor(gap / (1000 * 60 * 60 * 24));
+    let h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+    let s = Math.floor((gap % (1000 * 60)) / 1000);
+
+    d = d < 10 ? "0" + d : d;
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
+
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h;
+    document.getElementById("minutes").innerText = m;
+    document.getElementById("seconds").innerText = s;
+
+}, 1000);
+
+// 🔥 STRONG ANTI-SLEEP (MULTIPLE TRIGGERS)
+setInterval(() => {
+    document.body.style.opacity = Math.random() > 0.5 ? "0.99" : "1";
+}, 15000);
+
+setInterval(() => {
+    document.body.style.transform = "scale(1)";
+}, 20000);
+
+setInterval(() => {
+    window.scrollTo(0, 1);
+    window.scrollTo(0, 0);
+}, 25000);
+
+// 🔥 AUTO REFRESH EVERY 40 MIN
+setInterval(() => {
+    location.reload();
+}, 2400000);
+
+// 🔥 AUTO FULLSCREEN (TRY)
+document.addEventListener("click", () => {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+});
+
+</script>
+
+</body>
+</html>
